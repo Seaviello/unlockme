@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Route, Switch } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles/index';
-import Typography from '@material-ui/core/Typography/index';
 
 import {SideBar} from "../sideBar";
 import {AppBar} from "../appBar";
+import {routes} from "../../routes";
 
 const styles = theme => ({
     root: {
@@ -41,9 +42,11 @@ class Core extends React.Component {
                     className={classNames(classes.content)}
                 >
                     <div className={classes.toolbar}></div>
-                    <Typography paragraph>
-                        Text
-                    </Typography>
+                    <Switch>
+                        {
+                            Object.values(routes).map(({route, main})=> <Route {...route} component={main} />)
+                        }
+                    </Switch>
                 </main>
             </div>
         );

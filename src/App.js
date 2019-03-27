@@ -1,15 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
-import Core from "./Core";
-import "./App.css";
+import { BrowserRouter as Router, } from "react-router-dom";
+import {Core} from "./components/core";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <CssBaseline />
-        <Core />
-      </div>
+      <Router>
+          <Fragment>
+              <CssBaseline />
+              <Core />
+          </Fragment>
+      </Router>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { Route, Switch } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles/index";
+import Typography from "@material-ui/core/Typography";
 
 import { SideBar } from "../sideBar";
 import { AppBar } from "../appBar";
@@ -42,8 +43,21 @@ class Core extends React.Component {
         <main className={classNames(classes.content)}>
           <div className={classes.toolbar} />
           <Switch>
+            {Object.values(routes).map(({ route, title }) => (
+              <Route
+                key={route.path}
+                {...route}
+                component={() => (
+                  <Typography variant="h5" gutterBottom>
+                    {title}
+                  </Typography>
+                )}
+              />
+            ))}
+          </Switch>
+          <Switch>
             {Object.values(routes).map(({ route, main }) => (
-              <Route {...route} component={main} />
+              <Route key={route.path} {...route} component={main} />
             ))}
           </Switch>
         </main>

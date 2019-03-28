@@ -2,16 +2,23 @@ import { fakeApiCall } from "../../utils/fakeApiCall";
 
 const FAKE_USER_LIST = [
   {
-    id: 0,
+    id: 1,
     username: "admin",
     email: "admin@unlockme.com",
     status: "ACTIVE",
     permission: "ADMIN"
   },
   {
-    id: 1,
+    id: 2,
     username: "tkawik",
     email: "tkawik@unlockme.com",
+    status: "ACTIVE",
+    permission: "USER"
+  },
+  {
+    id: 3,
+    username: "newguy",
+    email: "newguy@unlock.com",
     status: "ACTIVE",
     permission: "USER"
   }

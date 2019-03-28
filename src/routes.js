@@ -4,6 +4,7 @@ import Home from "@material-ui/icons/Home";
 import Lock from "@material-ui/icons/Lock";
 import Logs from "@material-ui/icons/Assessment";
 import { UsersPage } from "./pages/users";
+import { LocksPage } from "./pages/locks";
 
 export const routes = {
   HOME: {
@@ -29,7 +30,7 @@ export const routes = {
     },
     title: "Locks",
     icon: () => <Lock />,
-    main: () => <div>Locks</div>
+    main: LocksPage
   },
   LOGS: {
     route: {

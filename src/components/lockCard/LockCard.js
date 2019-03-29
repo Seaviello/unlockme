@@ -48,7 +48,7 @@ const styles = theme => ({
     },
 });
 
-const LockCard = ({ name, id, onClickLock, status, loading, classes, onUpdate, noPermission }) => {
+const LockCard = ({ name, id, onClickLock, status, loading, classes, onUpdate }) => {
     const open = status === 'OPENED';
     const lockClassname = classNames({
         [classes.locked]: !open,
@@ -73,7 +73,10 @@ const LockCard = ({ name, id, onClickLock, status, loading, classes, onUpdate, n
                         </IconButton>
                     </Tooltip>
                     {loading && (
-                        <CircularProgress size={60} className={open ? classes.lockProgress : classes.unlockProgress} />
+                        <CircularProgress
+                            size={60}
+                            className={open ? classes.lockProgress : classes.unlockProgress}
+                        />
                     )}
                 </div>
                 <Button size="small" color="primary" onClick={() => onUpdate(id)}>

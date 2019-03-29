@@ -42,7 +42,9 @@ const LockModal = ({ isOpen = false, id, onClose, classes }) => {
             setNameError(null);
         }
     };
-    const { getLock, updatingLock, updateLockInformation, currentLock, gettingLock } = useContext(LockContext);
+    const { getLock, updatingLock, updateLockInformation, currentLock, gettingLock } = useContext(
+        LockContext
+    );
     const { getUsers, users: allUsers, loading: gettingUsers } = useContext(UserContext);
     useEffect(() => {
         if (isOpen) {
@@ -90,7 +92,9 @@ const LockModal = ({ isOpen = false, id, onClose, classes }) => {
                                 fullWidth
                             />
                             <FormControl fullWidth>
-                                <InputLabel htmlFor="select-multiple-checkbox">Users with access rights</InputLabel>
+                                <InputLabel htmlFor="select-multiple-checkbox">
+                                    Users with access rights
+                                </InputLabel>
                                 <Select
                                     multiple
                                     value={users}
@@ -98,12 +102,20 @@ const LockModal = ({ isOpen = false, id, onClose, classes }) => {
                                     input={<Input id="select-multiple-checkbox" />}
                                     /* FIXME Completely inefficient to every single time extract it: should be as a map */
                                     renderValue={users =>
-                                        users.map(id => allUsers.find(user => user.id === id).username).join(', ')
+                                        users
+                                            .map(
+                                                id => allUsers.find(user => user.id === id).username
+                                            )
+                                            .join(', ')
                                     }
                                 >
                                     {allUsers.map(({ id, username }) => (
                                         <MenuItem key={id} value={id}>
-                                            <Checkbox checked={users.findIndex(userId => userId === id) !== -1} />
+                                            <Checkbox
+                                                checked={
+                                                    users.findIndex(userId => userId === id) !== -1
+                                                }
+                                            />
                                             <ListItemText primary={username} />
                                         </MenuItem>
                                     ))}
@@ -117,9 +129,11 @@ const LockModal = ({ isOpen = false, id, onClose, classes }) => {
                         </Button>
                         <div className={classes.wrapper}>
                             <Button onClick={onUpdate} color="primary" disabled={updatingLock}>
-                                {mode}
+                                Save
                             </Button>
-                            {updatingLock && <CircularProgress size={24} className={classes.buttonProgress} />}
+                            {updatingLock && (
+                                <CircularProgress size={24} className={classes.buttonProgress} />
+                            )}
                         </div>
                     </DialogActions>
                 </Fragment>

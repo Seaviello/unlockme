@@ -2,7 +2,9 @@
   "name": "unlockme",
   "version": "0.1.0",
   "private": true,
-  "pre-commit": ["lint:staged"],
+  "pre-commit": [
+    "lint:staged"
+  ],
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
@@ -12,7 +14,8 @@
   },
   "devDependencies": {
     "lint-staged": "^8.1.5",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.16.4"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",

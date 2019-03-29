@@ -3,7 +3,7 @@ import { getLogs } from './service';
 
 const Context = createContext();
 const { Provider, Consumer } = Context;
-class LogsProvider extends Component {
+class LogProvider extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,4 +28,4 @@ class LogsProvider extends Component {
     }
 }
 
-export { LogsProvider, Consumer as LogConsumer, Context as LogContext };
+export { LogProvider, Consumer as LogConsumer, Context as LogContext };

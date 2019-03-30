@@ -2,7 +2,7 @@
 import { fakeApiCall } from '../../utils/fakeApiCall';
 import { addLog } from '../logs/service';
 
-const FAKE_LOCK_LIST = [
+export const FAKE_LOCK_LIST = [
     {
         id: 1,
         name: 'Las Vegas',
@@ -77,7 +77,7 @@ export const updateLock = async ({ id, name, users }) => {
         return data;
     }
 };
-export const openLock = async ({ id, newStatus }) => {
+export const toggleLock = async ({ id, newStatus }) => {
     const lockIndex = FAKE_LOCK_LIST.findIndex(lock => lock.id === id);
     const lock = FAKE_LOCK_LIST[lockIndex];
     /* If lock does not provide permission for admin user return 403 */

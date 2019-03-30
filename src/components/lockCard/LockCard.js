@@ -55,7 +55,7 @@ const LockCard = ({ name, id, onClickLock, status, loading, classes, onUpdate })
         [classes.unlocked]: open,
     });
     return (
-        <Card>
+        <Card data-test-id="lock-card" data-test-lock-name={name} data-test-lock-status={status}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary">
                     {name}
@@ -68,6 +68,7 @@ const LockCard = ({ name, id, onClickLock, status, loading, classes, onUpdate })
                             aria-label={open ? 'Lock' : 'Unlock'}
                             className={lockClassname}
                             onClick={loading ? () => {} : () => onClickLock({ id, status })}
+                            data-test-id="lock-toggle-button"
                         >
                             {open ? <LockOpenIcon /> : <LockIcon />}
                         </IconButton>
@@ -79,7 +80,12 @@ const LockCard = ({ name, id, onClickLock, status, loading, classes, onUpdate })
                         />
                     )}
                 </div>
-                <Button size="small" color="primary" onClick={() => onUpdate(id)}>
+                <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => onUpdate(id)}
+                    data-test-id="lock-edit-button"
+                >
                     Edit
                 </Button>
             </CardActions>

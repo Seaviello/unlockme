@@ -13,6 +13,9 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^3.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "eslint-plugin-cypress": "^2.2.1",
     "lint-staged": "^8.1.5",
     "pre-commit": "^1.2.2",

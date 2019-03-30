@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react';
-import { getLocks, openLock, getLock, updateLock } from './service';
+import { getLocks, toggleLock, getLock, updateLock } from './service';
 import { SnackContext } from '../snacks';
+const EMPTY_NEW_LOCK = { name: '', users: [] };
 
 const Context = createContext();
 const { Provider, Consumer } = Context;
@@ -52,7 +53,7 @@ class LockProvider extends Component {
                 this.setState({ gettingLock: false, gettingLockError: error });
             }
         } else {
-            this.setState({ currentLock: { name: '', users: [] } });
+            this.setState({ currentLock: { ...EMPTY_NEW_LOCK } });
         }
     };
 
@@ -77,7 +78,7 @@ class LockProvider extends Component {
             togglingLockError: { ...this.state.togglingLockError, [id]: null },
         });
         try {
-            const toggledLock = await openLock({
+            const toggledLock = await toggleLock({
                 id,
                 newStatus: status === 'OPENED' ? 'CLOSED' : 'OPENED',
             });

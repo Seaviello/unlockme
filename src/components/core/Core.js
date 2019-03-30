@@ -42,7 +42,7 @@ class Core extends React.Component {
                 <AppBar onMenuClick={this.handleSideBarOpen} />
                 <SideBar onClose={this.handleSideBarClose} open={open} />
                 <Snack />
-                <main className={classNames(classes.content)}>
+                <main className={classNames(classes.content)} data-test-id="content">
                     <div className={classes.toolbar} />
                     <Switch>
                         {Object.values(routes).map(({ route, title }) => (

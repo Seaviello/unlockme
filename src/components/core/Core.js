@@ -6,8 +6,8 @@ import Typography from '@material-ui/core/Typography';
 
 import { SideBar } from '../sideBar';
 import { AppBar } from '../appBar';
-import { Snack } from '../snack';
 import { routes } from '../../routes';
+import Snack from '../../containers/Snack';
 
 const styles = theme => ({
     root: {

@@ -44,9 +44,14 @@ const LocksPage = ({ classes }) => {
                     </Grid>
                 ))}
             </Grid>
-            <LockModal isOpen={isModalOpen} onClose={() => toggleModal()} id={selectedLockId} />
+            <LockModal open={isModalOpen} onClose={() => toggleModal()} id={selectedLockId} />
             <Tooltip title="Add lock" enterDelay={500} leaveDelay={200}>
-                <Fab color="primary" aria-label="Add" className={classes.fab} onClick={() => toggleModal()}>
+                <Fab
+                    color="primary"
+                    aria-label="Add"
+                    className={classes.fab}
+                    onClick={() => toggleModal()}
+                >
                     <AddIcon />
                 </Fab>
             </Tooltip>

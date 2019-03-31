@@ -32,8 +32,9 @@ const styles = theme => ({
     },
 });
 
-const LockModal = ({ isOpen = false, id, onClose, classes }) => {
+const LockModal = ({ open = false, id, onClose, classes }) => {
     const [name, setName] = useState('');
+    /* For basic field validation - not scalable solution */
     const [nameError, setNameError] = useState(null);
     const [users, setUsers] = useState([]);
     const onNameChange = ({ target: { value } }) => {
@@ -47,11 +48,11 @@ const LockModal = ({ isOpen = false, id, onClose, classes }) => {
     );
     const { getUsers, users: allUsers, loading: gettingUsers } = useContext(UserContext);
     useEffect(() => {
-        if (isOpen) {
+        if (open) {
             getLock(id);
             getUsers();
         }
-    }, [isOpen]);
+    }, [open]);
     useEffect(() => {
         if (currentLock) {
             setName(currentLock.name);
@@ -70,7 +71,7 @@ const LockModal = ({ isOpen = false, id, onClose, classes }) => {
     };
     const mode = id ? 'Edit' : 'Add';
     return (
-        <Dialog fullWidth open={isOpen} onClose={onClose} aria-labelledby="form-dialog-title">
+        <Dialog fullWidth open={open} onClose={onClose} aria-labelledby="form-dialog-title">
             {gettingLock || gettingUsers ? (
                 <Fragment />
             ) : (
@@ -100,7 +101,8 @@ const LockModal = ({ isOpen = false, id, onClose, classes }) => {
                                     value={users}
                                     onChange={event => setUsers(event.target.value)}
                                     input={<Input id="select-multiple-checkbox" />}
-                                    /* FIXME Completely inefficient to every single time extract it: should be as a map */
+                                    /* FIXME: Inefficient
+                                        Constructing map userId -> username would be preferable solution */
                                     renderValue={users =>
                                         users
                                             .map(

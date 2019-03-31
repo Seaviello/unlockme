@@ -44,7 +44,7 @@ const styles = theme => ({
     },
 });
 
-function SnackbarContent(props) {
+function SnackContent(props) {
     const { classes, className, message, onClose, variant, ...other } = props;
     const Icon = variantIcon[variant];
 
@@ -74,4 +74,4 @@ function SnackbarContent(props) {
     );
 }
 
-export default withStyles(styles)(SnackbarContent);
+export default withStyles(styles)(SnackContent);

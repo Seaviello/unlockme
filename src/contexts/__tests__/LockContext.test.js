@@ -7,7 +7,6 @@ import {
     toggleLock as toggleLockMock,
 } from '../locks/service';
 import { LockProvider } from '../locks';
-import { SnackProvider } from '../snacks';
 
 const FAKE_LOCK = {
     id: 1,
@@ -140,13 +139,11 @@ describe('Lock Context', () => {
             wrapper.setState({ locks: [FAKE_LOCK], updatingLockError: 'ERROR' });
             updateLockMock.mockReturnValue(Promise.resolve({ ...FAKE_LOCK, name: 'tomato' }));
 
-            await wrapper
-                .instance()
-                .updateLockInformation({
-                    id: FAKE_LOCK.id,
-                    name: 'tomato',
-                    users: FAKE_LOCK.users,
-                });
+            await wrapper.instance().updateLockInformation({
+                id: FAKE_LOCK.id,
+                name: 'tomato',
+                users: FAKE_LOCK.users,
+            });
 
             expect(updateLockMock).toHaveBeenCalledWith({
                 id: FAKE_LOCK.id,
@@ -201,7 +198,8 @@ describe('Lock Context', () => {
             ]);
         });
 
-        /* Test does not work because of not easy solution to mock `static contextType = SnackContext;` */
+        /* There is no easy solution currently to mock `static contextType = SnackContext;`
+         * Requires more investigation */
         xit('should handle failure of request', async () => {
             const addSnack = jest.fn();
             const wrapper = shallow(<LockProvider />, { addSnack });
